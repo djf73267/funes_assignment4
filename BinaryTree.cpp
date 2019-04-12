@@ -84,7 +84,7 @@ void BinaryTree::deleteItem(ItemType &key){
 }
 /*
  Parameter: Node*& root, ItemType& item
- Objective: 
+ Objective: recursive call to delete items based on the item's given value
  **/
 void BinaryTree::Delete(Node*& root, ItemType& item){
     if(item.getValue()<root->key.getValue())
@@ -95,8 +95,8 @@ void BinaryTree::Delete(Node*& root, ItemType& item){
         DeleteNode(root);
 }
 /*
- Parameter:
- Objective:
+ Parameter: Node*& tree
+ Objective: will create a temporary pointer that will establish the original tree value and tree will copy the next value and temp is deleted
  **/
 void BinaryTree::DeleteNode(Node*& tree){
     ItemType data;
@@ -117,8 +117,8 @@ void BinaryTree::DeleteNode(Node*& tree){
     }
 }
 /*
- Parameter:
- Objective:
+ Parameter: Node*& node, ItemType& data)
+ Objective: will retrieve the predecessor node used in the delete node method
  **/
 void BinaryTree::getPredecessor(Node*& node, ItemType& data){
     while(node->right != NULL){
@@ -127,8 +127,8 @@ void BinaryTree::getPredecessor(Node*& node, ItemType& data){
     data = node->key;
 }
 /*
- Parameter:
- Objective:
+ Parameter:ItemType &key
+ Objective: parameter is taken to compare with the recusive method if the value has non siblings on the same level
  **/
 void BinaryTree::getSameLevelNonSiblings(ItemType &key){
     bool found = false;
@@ -139,8 +139,8 @@ void BinaryTree::getSameLevelNonSiblings(ItemType &key){
     cout << "No same level non siblings found" << endl;
 }
 /*
- Parameter:
- Objective:
+ Parameter: Node*& tree, ItemType& item, int level, bool &found)
+ Objective: a recusive call to determine if there are same level non siblings
  **/
 void BinaryTree::printSameLevelNonSiblings(Node*& tree, ItemType& item, int level, bool &found){
     if(level < 2 || tree == NULL){
@@ -185,7 +185,7 @@ int BinaryTree::findLevel(ItemType& item, Node*& tree, int level){
 }
 /**
  Parameter: ItemType &item, bool &found
- Objective: will ask for a specific value in the prompt and will search the tree for the value
+ Objective: calls recusive method and establishes if the item is within the tree or not
  
  **/
 void BinaryTree::retrieve(ItemType &item, bool &found) {
@@ -196,17 +196,17 @@ void BinaryTree::retrieve(ItemType &item, bool &found) {
         cout << "Item not in tree." << endl;
 }
 /*
- Parameter:
- Objective:
+ Parameter: Node* node, ItemType& item, bool&found
+ Objective: the recusive method that searches for item until it is found or not
  **/
 void BinaryTree::getItem(Node* node, ItemType& item, bool&found) {
-    if(node==NULL)
+    if(node==NULL) //base case
         found = false;
     else if(item.getValue()< node->key.getValue())
         getItem(node->left, item, found);
     else if(item.getValue()>node->key.getValue())
         getItem(node->right, item, found);
-    else{
+    else { //another case where solution can be found
         item = node->key;
         found = true;
     }
