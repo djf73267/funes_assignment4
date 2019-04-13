@@ -14,22 +14,22 @@ BinaryTree::BinaryTree(){
 }
 /*
  Parameter: none
- Objective: a recursive loop that calls clearAll
+ Objective: a recursive loop that calls Destroy
  **/
 BinaryTree::~BinaryTree(){
-    clearAll(root);
+    Destroy(root);
 }
 /*
  Parameter: Node* tree
  Objective: the recursive method that goes through the tree deleting each node
  **/
-void BinaryTree::clearAll(Node *tree){
+void BinaryTree::Destroy(Node *tree){
     if(tree == NULL)
         return;
     if(tree->left !=NULL)
-        clearAll(tree->left);
+        Destroy(tree->left);
     if(tree->right !=NULL)
-        clearAll(tree->right);
+        Destroy(tree->right);
     delete tree;
     return;
 }
