@@ -80,7 +80,7 @@ while(true){
         else if(s1=="o"){
             cout << "Post-Order: ";
             list.postOrder(); //prints post order
-            out << endl;
+            cout << endl;
         }
         else if(s1=="p"){
             cout << "Pre-Order: ";
