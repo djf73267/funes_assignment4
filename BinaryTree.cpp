@@ -14,22 +14,22 @@ BinaryTree::BinaryTree(){
 }
 /*
  Parameter: none
- Objective: a recursive loop that calls Destroy method
+ Objective: a recursive loop that calls clearAll
  **/
 BinaryTree::~BinaryTree(){
-    Destroy(root);
+    clearAll(root);
 }
 /*
  Parameter: Node* tree
  Objective: the recursive method that goes through the tree deleting each node
  **/
-void BinaryTree::Destroy(Node *tree){
+void BinaryTree::clearAll(Node *tree){
     if(tree == NULL)
         return;
     if(tree->left !=NULL)
-        Destroy(tree->left);
+        clearAll(tree->left);
     if(tree->right !=NULL)
-        Destroy(tree->right);
+        clearAll(tree->right);
     delete tree;
     return;
 }
@@ -57,8 +57,8 @@ void BinaryTree::putItem(ItemType item, Node*& node, bool& found){
         node->key = item;
         found = true;
     }
-    else if(item.getValue() < node->key.getValue()){  //found it necessary to call ItemType method getValue
-        putItem(item, node->left, found);              // to establish which is greater than the other
+    else if(item.getValue() < node->key.getValue()){
+        putItem(item, node->left, found);
     }
     else if(item.getValue() > node->key.getValue()){
         putItem(item, node->right, found);
@@ -213,7 +213,7 @@ void BinaryTree::getItem(Node* node, ItemType& item, bool&found) {
 }
 /**
  Parameter: none
- Objective: prints the tree in pre order
+ Objective: prints the tree in pre o rder
  
  **/
 void BinaryTree::preOrder(){
