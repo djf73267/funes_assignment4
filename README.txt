@@ -11,3 +11,6 @@ use the makefile with the following command to create a excecution file
 
 to run the program with the given .txt file
 2. ./main input.txt 
+
+OTHER COMMANDS
+make clean removes the ./main execution 
